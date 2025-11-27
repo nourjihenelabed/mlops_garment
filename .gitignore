@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Data / models / outputs
+*.joblib
+*.csv
+*.pdf
+*.png
+test-report.html
+test-results.xml
+backup_*
+
+# Ignore temporary editor files
+*~ 
+.DS_Store
