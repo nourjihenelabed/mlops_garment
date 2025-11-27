@@ -1,0 +1,14 @@
+# Linters / Formatters
+black
+flake8
+pylint
+bandit
+
+# Testing
+pytest
+pytest-cov
+pytest-html
+
+# Optional helpers
+ipython
+jupyter
