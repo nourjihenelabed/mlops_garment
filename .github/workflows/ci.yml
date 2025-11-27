@@ -46,7 +46,7 @@ jobs:
 
       # 6. Upload HTML test report as artifact
       - name: Upload test report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.2.2
         with:
           name: test-report
           path: test-report.html
