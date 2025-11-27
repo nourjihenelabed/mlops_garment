@@ -31,7 +31,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       # 4. Run quality gates
-      - name: Run Makefile CI (pylint, flake8, bandit)
+      - name: Run Makefile CI (pylint, bandit)
         run: |
           export PYTHONPATH=$PWD
           source venv/bin/activate
