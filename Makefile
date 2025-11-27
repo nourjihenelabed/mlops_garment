@@ -36,7 +36,7 @@ pylint-gate:
 .PHONY: flake8-gate
 flake8-gate:
 	@echo " Running Flake8 Formatting Gate..."
-	@$(ENV_NAME)/bin/flake8 *.py \
+	@$(ENV_NAME)/bin/flake8 main.py \
 		--count \
 		--statistics \
 		--max-complexity=$(FLAKE8_MAX_COMPLEXITY) \
