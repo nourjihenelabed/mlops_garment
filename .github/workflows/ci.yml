@@ -1,0 +1,52 @@
+name: ML Project CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Python
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      # 4. Run quality gates
+      - name: Run Makefile CI (pylint, flake8, bandit)
+        run: |
+          export PYTHONPATH=$PWD
+          source venv/bin/activate
+          make ci
+
+      # 5. Run all tests and generate HTML report
+      - name: Run tests and generate HTML report
+        run: |
+          export PYTHONPATH=$PWD
+          source venv/bin/activate
+          make test-report
+
+      # 6. Upload HTML test report as artifact
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test-report.html
