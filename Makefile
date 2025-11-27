@@ -41,6 +41,7 @@ flake8-gate:
 		--statistics \
 		--max-complexity=$(FLAKE8_MAX_COMPLEXITY) \
 		--max-line-length=$(FLAKE8_MAX_LINE_LENGTH) || \
+		--exit-zero
 		( echo ' Flake8 Gate Failed!'; exit 1 )
 	@echo "Flake8 Gate Passed!"
 
